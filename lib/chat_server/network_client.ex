@@ -37,5 +37,6 @@ defmodule ChatServer.NetworkClient do
   def exit(pid) do
     %__MODULE__{state: state} = Agent.get(pid, fn client -> client end)
     ChatServer.NetworkState.exit(state, pid)
+    Agent.stop(pid)
   end
 end
