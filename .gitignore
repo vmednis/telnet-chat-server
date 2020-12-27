@@ -25,3 +25,7 @@ chat_server-*.tar
 
 # Temporary files for e.g. tests
 /tmp
+
+#Others
+/.mnesia/
+/mix.lock
