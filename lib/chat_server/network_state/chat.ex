@@ -10,6 +10,7 @@ defimpl ChatServer.NetworkState, for: ChatServer.NetworkState.Chat do
   def enter(state, network_client) do
     Clients.register(state.username, network_client)
     Clients.broadcast_except(state.username <> " has joined the chat!", state.username)
+    Client.transmit(network_client, "Welcome " <> IO.ANSI.red() <> state.username <> IO.ANSI.reset() <> "!\n")
     Client.transmit(network_client, "Type /help for help\n")
   end
 
